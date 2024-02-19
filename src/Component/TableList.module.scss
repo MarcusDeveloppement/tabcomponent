@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #a6b54d;
+  padding: 2rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.searchBar {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  select {
+    font-size: 1.2rem;
+  }
+}
+
+.inputContent {
+  border-radius: 5px;
+  border: 1px solid rgb(109, 109, 109);
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.2rem;
+}
+
+.entries {
+  margin: 0.5rem;
+}
+
+.list {
+  background-color: rgb(252, 254, 246);
+}
+
+.listHead {
+  border: none;
+}
+
+.listSort {
+  width: 100%;
+  border: none;
+  background-color: #e2dbfd;
+  border-radius: 5px;
+  padding-bottom: 0.8rem;
+  h2 {
+    margin: 0.5rem 0;
+  }
+}
+
+.iconSort {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.orderIcon {
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.iconHidden {
+  visibility: hidden;
+}
+
+.tableRowOdd {
+  background-color: #f2f2f2;
+}
+
+.tableRowEven {
+  background-color: #ffffff;
+}
+.cell {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+}
+.footerContent {
+  background-color: #f6fcd2;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0 0 10px 10px;
+}
+.footerNav {
+  display: flex;
+}
+.btnNav {
+  margin: 0.8rem;
+  border: none;
+  font-size: 1.2rem;
+  background-color: #a6b54d;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 0 1rem;
+  &:hover {
+    border: 1px solid #7c8c1e;
+    color: #393939;
+  }
+}
+
+.error {
+  font-size: 1.8rem;
+  font-style: italic;
+}
