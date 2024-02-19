@@ -1,9 +1,16 @@
 {
   "name": "@marcusdeveloppement/tabcomponent",
   "version": "1.0.0",
+  "private": false,
   "type": "module",
   "main": "dist/table-component.cjs.js",
   "module": "dist/table-component.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/table-component.esm.js",
+      "require": "./dist/table-component.cjs.js"
+    }
+  },
   "files": [
     "dist"
   ],
