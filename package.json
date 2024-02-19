@@ -1,6 +1,6 @@
 {
   "name": "@marcusdeveloppement/tabcomponent",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "private": false,
   "type": "module",
   "main": "dist/table-component.umd.js",
@@ -12,7 +12,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/style.css"
   ],
   "scripts": {
     "dev": "vite",

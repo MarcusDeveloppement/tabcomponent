@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import styles from "./TableList.module.scss";
+import "./TableList.css";
 
 export default function TableList({ content, objectKey }) {
   const [formattedContent, setFormattedContent] = useState(null);
@@ -157,15 +157,15 @@ export default function TableList({ content, objectKey }) {
   };
 
   return (
-    <div className={styles.container}>
-      <header className={styles.tableHeader}>
-        <label htmlFor="tableSeparate" className={styles.searchBar}>
+    <div className="container">
+      <header className="tableHeader">
+        <label htmlFor="tableSeparate" className="searchBar">
           Show
           <select
             id="tableSeparate"
             name="tableSeparate"
             value={rowsDisplayed}
-            className={styles.entries}
+            className="entries"
             onChange={(event) => setRowsDisplayed(event.target.value)}
           >
             <option value={10}>10</option>
@@ -175,12 +175,12 @@ export default function TableList({ content, objectKey }) {
           </select>
           entries
         </label>
-        <form className={styles.searchBar}>
+        <form className="searchBar">
           <label htmlFor="tableSearch">Search: </label>
           <input
             id="tableSearch"
             name="tableSearch"
-            className={styles.inputContent}
+            className="inputContent"
             onChange={(event) => {
               setFilteredContent(
                 filterContent(event.target.value, formattedContent)
@@ -189,13 +189,13 @@ export default function TableList({ content, objectKey }) {
           ></input>
         </form>
       </header>
-      <table className={styles.list}>
+      <table className="list">
         <thead>
-          <tr className={styles.listHead}>
+          <tr className="listHead">
             {categories.map((category) => (
               <th key={category.category}>
                 <button
-                  className={styles.listSort}
+                  className="listSort"
                   onClick={() => {
                     setFilteredContent(
                       sortContent(filteredContent, category.category, true)
@@ -204,19 +204,19 @@ export default function TableList({ content, objectKey }) {
                   }}
                 >
                   <h2>{category.formattedCategory}</h2>
-                  <div className={styles.iconSort}>
+                  <div className="iconSort">
                     <i
                       className={
                         sorting[category.category] !== "ascending"
-                          ? `${styles.orderIcon} fa-solid fa-sort-up`
-                          : `${styles.orderIcon} fa-solid fa-sort-up ${styles.iconHidden}`
+                          ? "orderIcon fa-solid fa-sort-up"
+                          : "orderIcon fa-solid fa-sort-up iconHidden"
                       }
                     ></i>
                     <i
                       className={
                         sorting[category.category] !== "descending"
-                          ? `${styles.orderIcon} fa-solid fa-sort-down`
-                          : `${styles.orderIcon} fa-solid fa-sort-down ${styles.iconHidden}`
+                          ? "orderIcon fa-solid fa-sort-down"
+                          : "orderIcon fa-solid fa-sort-down iconHidden"
                       }
                     ></i>
                   </div>
@@ -230,12 +230,10 @@ export default function TableList({ content, objectKey }) {
             separatedContent[currentPage].map((row, index) => (
               <tr
                 key={index}
-                className={
-                  index % 2 === 0 ? styles.tableRowEven : styles.tableRowOdd
-                }
+                className={index % 2 === 0 ? "tableRowEven" : "tableRowOdd"}
               >
                 {categories.map((category) => (
-                  <td key={category.category} className={styles.cell}>
+                  <td key={category.category} className="cell">
                     {renderProperty(row, category)}
                   </td>
                 ))}
@@ -243,16 +241,16 @@ export default function TableList({ content, objectKey }) {
             ))
           ) : (
             <tr>
-              <td className={styles.error} colSpan={categories.length}>
+              <td className="error" colSpan={categories.length}>
                 No result matches your search!
               </td>
             </tr>
           )}
         </tbody>
       </table>
-      <footer className={styles.footerContent}>
+      <footer className="footerContent">
         {separatedContent && separatedContent.length > 0 && (
-          <p className={styles.showEntries}>
+          <p className="showEntries">
             Showing{" "}
             {filteredContent.indexOf(
               separatedContent[currentPage][rowsDisplayed - 1]
@@ -265,11 +263,11 @@ export default function TableList({ content, objectKey }) {
           </p>
         )}
         {separatedContent && separatedContent.length > 0 && (
-          <nav className={styles.footerNav}>
+          <nav className="footerNav">
             {currentPage !== 0 && (
               <button
                 onClick={() => setCurrentPage(currentPage - 1)}
-                className={styles.btnNav}
+                className="btnNav"
               >
                 Previous
               </button>
@@ -281,7 +279,7 @@ export default function TableList({ content, objectKey }) {
               currentPage !== separatedContent.length - 1 && (
                 <button
                   onClick={() => setCurrentPage(currentPage + 1)}
-                  className={styles.btnNav}
+                  className="btnNav"
                 >
                   Next
                 </button>
