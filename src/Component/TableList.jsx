@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import "./TableList.css";
 
@@ -205,20 +204,52 @@ export default function TableList({ content, objectKey }) {
                 >
                   <h2>{category.formattedCategory}</h2>
                   <div className="iconSort">
-                    <i
-                      className={
-                        sorting[category.category] !== "ascending"
-                          ? "orderIcon fa-solid fa-sort-up"
-                          : "orderIcon fa-solid fa-sort-up iconHidden"
-                      }
-                    ></i>
-                    <i
-                      className={
-                        sorting[category.category] !== "descending"
-                          ? "orderIcon fa-solid fa-sort-down"
-                          : "orderIcon fa-solid fa-sort-down iconHidden"
-                      }
-                    ></i>
+                    {sorting[category.category] !== "ascending" ? (
+                      <svg
+                        className="orderIcon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="orderIcon iconHidden"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
+                      </svg>
+                    )}
+                    {sorting[category.category] !== "descending" ? (
+                      <svg
+                        className="orderIcon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="orderIcon iconHidden"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
+                      </svg>
+                    )}
                   </div>
                 </button>
               </th>
