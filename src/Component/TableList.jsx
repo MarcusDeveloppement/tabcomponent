@@ -188,97 +188,99 @@ export default function TableList({ content, objectKey }) {
           ></input>
         </form>
       </header>
-      <table className="list">
-        <thead>
-          <tr className="listHead">
-            {categories.map((category) => (
-              <th key={category.category}>
-                <button
-                  className="listSort"
-                  onClick={() => {
-                    setFilteredContent(
-                      sortContent(filteredContent, category.category, true)
-                    );
-                    toggleSortOrder(category.category);
-                  }}
-                >
-                  <h2>{category.formattedCategory}</h2>
-                  <div className="iconSort">
-                    {sorting[category.category] !== "ascending" ? (
-                      <svg
-                        className="orderIcon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="orderIcon iconHidden"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
-                      </svg>
-                    )}
-                    {sorting[category.category] !== "descending" ? (
-                      <svg
-                        className="orderIcon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="orderIcon iconHidden"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {separatedContent && separatedContent.length > 0 ? (
-            separatedContent[currentPage].map((row, index) => (
-              <tr
-                key={index}
-                className={index % 2 === 0 ? "tableRowEven" : "tableRowOdd"}
-              >
-                {categories.map((category) => (
-                  <td key={category.category} className="cell">
-                    {renderProperty(row, category)}
-                  </td>
-                ))}
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td className="error" colSpan={categories.length}>
-                No result matches your search!
-              </td>
+      <div className="tableContentList">
+        <table className="list">
+          <thead>
+            <tr className="listHead">
+              {categories.map((category) => (
+                <th key={category.category}>
+                  <button
+                    className="listSort"
+                    onClick={() => {
+                      setFilteredContent(
+                        sortContent(filteredContent, category.category, true)
+                      );
+                      toggleSortOrder(category.category);
+                    }}
+                  >
+                    <h2>{category.formattedCategory}</h2>
+                    <div className="iconSort">
+                      {sorting[category.category] !== "ascending" ? (
+                        <svg
+                          className="orderIcon"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="orderIcon iconHidden"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M7 14L12 9L17 14H7Z" fill="currentColor" />
+                        </svg>
+                      )}
+                      {sorting[category.category] !== "descending" ? (
+                        <svg
+                          className="orderIcon"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="orderIcon iconHidden"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M7 10L12 15L17 10H7Z" fill="currentColor" />
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                </th>
+              ))}
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {separatedContent && separatedContent.length > 0 ? (
+              separatedContent[currentPage].map((row, index) => (
+                <tr
+                  key={index}
+                  className={index % 2 === 0 ? "tableRowEven" : "tableRowOdd"}
+                >
+                  {categories.map((category) => (
+                    <td key={category.category} className="cell">
+                      {renderProperty(row, category)}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td className="error" colSpan={categories.length}>
+                  No result matches your search!
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
       <footer className="footerContent">
         {separatedContent && separatedContent.length > 0 && (
           <p className="showEntries">
