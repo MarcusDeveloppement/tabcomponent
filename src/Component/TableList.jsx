@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
 import "./TableList.css";
 
+// The TableList component is designed to display a list of content in a tabular format,
+// with features for sorting, filtering, and pagination.
+
 export default function TableList({ content, objectKey }) {
+  // formattedContent stores the content formatted for display.
   const [formattedContent, setFormattedContent] = useState(null);
+  // filteredContent stores content filtered according to user search criteria.
   const [filteredContent, setFilteredContent] = useState(null);
+  // separatedContent divides the filtered content into pages based on desired rows per page.
   const [separatedContent, setSeparatedContent] = useState(null);
+  // categories stores the categories (columns) of the table.
   const [categories, setCategories] = useState([]);
+  // sorting stores the sorting state for each category.
   const [sorting, setSorting] = useState({});
+  // rowsDisplayed determines the number of rows to display per page.
   const [rowsDisplayed, setRowsDisplayed] = useState(10);
+  // currentPage stores the currently displayed page.
   const [currentPage, setCurrentPage] = useState(0);
 
+  // Initializes categories and formats content on component mount
+  // or when content or objectKey changes.
   useEffect(() => {
+    // Defines categories and prepares data for initial sorting.
     const defineCategories = (content) => {
       const tempCategories = [];
       const formattedCategories = [];
@@ -48,7 +61,7 @@ export default function TableList({ content, objectKey }) {
       setCategories(formattedCategories);
       setSorting(initSorting);
     };
-
+    // Adjusts content based on the provided objectKey.
     const removeObjects = (content) => {
       let tempContent = [];
 
@@ -71,10 +84,12 @@ export default function TableList({ content, objectKey }) {
     removeObjects(content);
   }, [content, objectKey]);
 
+  // Updates filteredContent whenever formattedContent changes.
   useEffect(() => {
     setFilteredContent(formattedContent);
   }, [formattedContent]);
 
+  // Function to sort content based on a specified category and order.
   const sortContent = (content, category, toggleOrder = false) => {
     if (toggleOrder) {
       toggleSortOrder(category);
@@ -96,13 +111,14 @@ export default function TableList({ content, objectKey }) {
       }
     });
   };
-
+  // Toggles the sorting order for a given category.
   const toggleSortOrder = (category) => {
     const newOrder =
       sorting[category] === "ascending" ? "descending" : "ascending";
     setSorting({ ...sorting, [category]: newOrder });
   };
 
+  // Filters content based on a search query.
   const filterContent = (query, content) => {
     const newContent = content.filter((row) => {
       let rowValues = Object.values(row);
@@ -121,6 +137,7 @@ export default function TableList({ content, objectKey }) {
     return newContent;
   };
 
+  // Splits the filtered content into multiple pages.
   useEffect(() => {
     const separatePages = (content) => {
       let originalContent = [...content];
@@ -138,6 +155,7 @@ export default function TableList({ content, objectKey }) {
     }
   }, [rowsDisplayed, filteredContent]);
 
+  // Renders a specific property of a row, with formatting if necessary.
   const renderProperty = (row, category) => {
     const value = row[category.category] || "N/A";
     if (
@@ -154,7 +172,7 @@ export default function TableList({ content, objectKey }) {
     }
     return value;
   };
-
+  // Component structure, including display management, search, and pagination.
   return (
     <div className="container">
       <header className="tableHeader">

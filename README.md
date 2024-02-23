@@ -1,8 +1,14 @@
-# React + Vite
+# Wealth Health package
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the logic of the created package 'tabcomponent'. It contains the styles and logic behind the package.
+The complete project can be found on this [repository](https://github.com/MarcusDeveloppement/WeathHealth_P-14OC) in which there are all the installation instructions and you can also find the package installation instructions in [tabcomponent](https://github.com/MarcusDeveloppement/tabcomponent/pkgs/npm/tabcomponent)
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![React](https://img.shields.io/badge/react-%5E18.2.0-blue.svg)
+![vite](https://img.shields.io/badge/vite-%5E1.70.0-purple.svg)
+![node](https://img.shields.io/badge/node-%5E20.10.0-green.svg)
+
+## Authors
+
+- Marc KHAMCHANH

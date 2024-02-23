@@ -38,5 +38,6 @@
   },
   "dependencies": {
     "sass": "^1.71.0"
-  }
+  },
+  "author": "Khamchanh Marc"
 }
